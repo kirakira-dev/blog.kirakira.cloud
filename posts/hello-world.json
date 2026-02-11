@@ -1,0 +1,8 @@
+{
+  "title": "Hello World",
+  "slug": "hello-world",
+  "date": "2025-01-15T12:00:00Z",
+  "tags": ["meta", "first-post"],
+  "excerpt": "The obligatory first post. A quick intro to this blog and what you can expect to find here.",
+  "content": "## Hey there\n\nWelcome to **blog.kirakira.cloud** — my little corner of the internet where I write about code, tech, and whatever else crosses my mind.\n\n### What to expect\n\nThis blog is built with plain HTML, CSS, and JavaScript. No frameworks, no build tools, just the basics. Here's what I plan to write about:\n\n- **Code** — things I'm building, problems I've solved, tools I find interesting\n- **Tech** — thoughts on the industry, new technologies, and trends\n- **Misc** — everything else that doesn't fit neatly into a category\n\n### A code snippet\n\nBecause what's a dev blog without one?\n\n```javascript\nconst greeting = (name) => {\n  console.log(`hello, ${name}!`);\n  return `welcome to the blog`;\n};\n\ngreeting('world');\n```\n\n### Why no framework?\n\nSometimes the simplest solution is the best one. This blog is hosted on GitHub Pages, so it's just static files. The admin panel uses the GitHub API to commit posts directly to the repo. Simple, fast, and no servers to maintain.\n\n> \"Simplicity is the ultimate sophistication.\"\n\nThat's it for now. Stay tuned for more posts.\n\n---\n\n*— kira*"
+}

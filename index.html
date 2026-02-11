@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>blog.kirakira.cloud</title>
+  <meta name="description" content="A personal blog by kira — thoughts on code, tech, and everything in between.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-accent">&gt;</span> blog<span class="nav__logo-accent">.kirakira</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="/" class="nav__link nav__link--active">posts</a></li>
+        <li><a href="https://kirakira.cloud" class="nav__link" target="_blank" rel="noopener">home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <p class="hero__greeting">// welcome</p>
+      <h1 class="hero__title">
+        <span class="hero__title-accent">blog</span>.kirakira<span class="hero__cursor"></span>
+      </h1>
+      <p class="hero__subtitle">thoughts on code, tech, and everything in between</p>
+    </section>
+
+    <section class="posts">
+      <div class="section-header reveal">
+        <p class="section-header__label">// recent posts</p>
+        <h2 class="section-header__title">latest entries</h2>
+      </div>
+      <div class="posts__grid" id="posts-grid">
+        <!-- Posts loaded dynamically -->
+      </div>
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <div class="empty-state__icon">{ }</div>
+        <p class="empty-state__text">no posts yet — check back soon</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">&copy; 2025 <a href="https://kirakira.cloud">kirakira.cloud</a> — built with raw html, css &amp; js</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

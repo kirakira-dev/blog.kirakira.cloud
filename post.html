@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post — blog.kirakira.cloud</title>
+  <meta name="description" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-accent">&gt;</span> blog<span class="nav__logo-accent">.kirakira</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="/" class="nav__link">posts</a></li>
+        <li><a href="https://kirakira.cloud" class="nav__link" target="_blank" rel="noopener">home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <article class="post-page">
+      <a href="/" class="post-page__back" id="back-link">&larr; back to posts</a>
+
+      <header class="post-page__header" id="post-header">
+        <h1 class="post-page__title" id="post-title">Loading...</h1>
+        <div class="post-page__meta" id="post-meta"></div>
+      </header>
+
+      <div class="post-content" id="post-content">
+        <div style="text-align: center; padding: 40px;">
+          <div class="spinner" style="margin: 0 auto;"></div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">&copy; 2025 <a href="https://kirakira.cloud">kirakira.cloud</a> — built with raw html, css &amp; js</p>
+    </div>
+  </footer>
+
+  <script src="js/lib/marked.min.js"></script>
+  <script src="js/post.js"></script>
+</body>
+</html>

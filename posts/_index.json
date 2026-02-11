@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Hello World",
+    "slug": "hello-world",
+    "date": "2025-01-15T12:00:00Z",
+    "tags": ["meta", "first-post"],
+    "excerpt": "The obligatory first post. A quick intro to this blog and what you can expect to find here."
+  }
+]

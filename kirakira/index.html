@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>admin — blog.kirakira.cloud</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <!-- Login Screen -->
+  <div class="admin-wrapper" id="login-screen">
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login__logo">
+          <div class="login__logo-text">&gt;_ admin</div>
+          <div class="login__logo-sub">blog.kirakira.cloud</div>
+        </div>
+        <form id="login-form" autocomplete="off">
+          <div class="form-group">
+            <label class="form-label" for="username">username</label>
+            <input class="form-input" type="text" id="username" name="username" placeholder="enter username" autocomplete="off" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="password">password</label>
+            <input class="form-input" type="password" id="password" name="password" placeholder="enter password" autocomplete="off" required>
+          </div>
+          <button type="submit" class="btn btn--primary" id="login-btn">
+            sign in
+          </button>
+          <div class="login-error" id="login-error">invalid credentials</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="dashboard" id="dashboard">
+    <header class="dashboard__header">
+      <div class="dashboard__header-inner">
+        <div class="dashboard__title">
+          &gt;_ dashboard
+          <span class="dashboard__title-badge">admin</span>
+        </div>
+        <div class="dashboard__actions">
+          <a href="/" class="btn btn--secondary btn--small">view blog</a>
+          <button class="btn btn--secondary btn--small" id="btn-settings" title="Settings">settings</button>
+          <button class="btn btn--danger btn--small" id="btn-logout">sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard__body">
+      <!-- Token Setup Banner -->
+      <div class="token-setup" id="token-setup" style="display: none;">
+        <div class="token-setup__title">GitHub Token Required</div>
+        <div class="token-setup__desc">
+          To publish posts, you need a GitHub Personal Access Token with <code style="font-family: var(--font-mono); background: var(--bg-primary); padding: 1px 5px; border-radius: 3px; font-size: 0.85em;">repo</code> scope.
+          Your token is stored locally in your browser and never sent anywhere except GitHub's API.
+        </div>
+        <div class="token-setup__row">
+          <input class="form-input" type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
+          <input class="form-input" type="text" id="github-repo" placeholder="owner/repo (e.g. kira/blog)" style="max-width: 250px;">
+          <button class="btn btn--primary" id="btn-save-token" style="white-space: nowrap;">save token</button>
+        </div>
+      </div>
+
+      <!-- Token Status -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+        <div class="section-header" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none; flex: 1;">
+          <p class="section-header__label" id="view-label">// posts</p>
+          <h2 class="section-header__title" id="view-title">manage posts</h2>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="token-status" id="token-status"></span>
+          <button class="btn btn--primary btn--small" id="btn-new-post">+ new post</button>
+        </div>
+      </div>
+
+      <!-- Posts List View -->
+      <div class="view active visible" id="view-posts">
+        <div class="admin-posts" id="admin-posts-list">
+          <!-- Posts loaded dynamically -->
+        </div>
+        <div class="empty-state" id="admin-empty" style="display: none;">
+          <div class="empty-state__icon">{ }</div>
+          <p class="empty-state__text">no posts yet — create your first post</p>
+        </div>
+      </div>
+
+      <!-- Editor View -->
+      <div class="view" id="view-editor">
+        <div class="editor-container">
+          <div class="editor-fields">
+            <div class="form-group">
+              <label class="form-label" for="editor-title">post title</label>
+              <input class="form-input" type="text" id="editor-title" placeholder="My awesome post">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="editor-slug">slug</label>
+              <input class="form-input" type="text" id="editor-slug" placeholder="my-awesome-post">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="editor-tags">tags (comma separated)</label>
+              <input class="form-input" type="text" id="editor-tags" placeholder="coding, thoughts">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="editor-excerpt">excerpt</label>
+              <input class="form-input" type="text" id="editor-excerpt" placeholder="A brief description...">
+            </div>
+          </div>
+
+          <div class="editor-split">
+            <div class="editor-pane">
+              <div class="editor-pane__label">
+                <span>// markdown</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);" id="editor-wordcount">0 words</span>
+              </div>
+              <textarea class="editor-textarea" id="editor-content" placeholder="Write your post in markdown..."></textarea>
+            </div>
+            <div class="editor-pane">
+              <div class="editor-pane__label">
+                <span>// preview</span>
+              </div>
+              <div class="editor-preview post-content" id="editor-preview">
+                <p style="color: var(--text-muted); font-style: italic;">start typing to see preview...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="editor-actions">
+            <div class="editor-actions__left">
+              <button class="btn btn--secondary" id="btn-cancel-edit">cancel</button>
+            </div>
+            <div>
+              <button class="btn btn--primary" id="btn-publish">publish post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings View -->
+      <div class="view" id="view-settings">
+        <div class="settings-panel">
+          <h3 class="settings-panel__title">GitHub Integration</h3>
+          <div class="settings-group">
+            <label class="settings-group__label">Personal Access Token</label>
+            <div class="token-setup__row">
+              <input class="form-input" type="password" id="settings-token" placeholder="ghp_xxxxxxxxxxxx">
+            </div>
+            <p class="settings-group__help">Token with <code style="font-family: var(--font-mono); background: var(--bg-primary); padding: 1px 5px; border-radius: 3px; font-size: 0.85em;">repo</code> scope. Stored in localStorage only.</p>
+          </div>
+          <div class="settings-group">
+            <label class="settings-group__label">Repository</label>
+            <input class="form-input" type="text" id="settings-repo" placeholder="owner/repo">
+            <p class="settings-group__help">The GitHub repository for your blog (e.g. kira/blog.kirakira.cloud).</p>
+          </div>
+          <div class="settings-group">
+            <label class="settings-group__label">Branch</label>
+            <input class="form-input" type="text" id="settings-branch" placeholder="main" value="main">
+            <p class="settings-group__help">The branch to commit posts to.</p>
+          </div>
+          <div style="margin-top: 20px; display: flex; gap: 12px;">
+            <button class="btn btn--primary" id="btn-save-settings">save settings</button>
+            <button class="btn btn--secondary" id="btn-back-settings">back to posts</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Dialog -->
+  <div class="confirm-dialog" id="confirm-dialog">
+    <div class="confirm-dialog__card">
+      <h3 class="confirm-dialog__title" id="confirm-title">Confirm</h3>
+      <p class="confirm-dialog__text" id="confirm-text">Are you sure?</p>
+      <div class="confirm-dialog__actions">
+        <button class="btn btn--secondary btn--small" id="confirm-cancel">cancel</button>
+        <button class="btn btn--danger btn--small" id="confirm-ok">confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading">
+    <div class="spinner" style="width: 32px; height: 32px;"></div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/lib/marked.min.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -63,11 +63,15 @@
           To publish posts, you need a GitHub Personal Access Token with <code style="font-family: var(--font-mono); background: var(--bg-primary); padding: 1px 5px; border-radius: 3px; font-size: 0.85em;">repo</code> scope.
           Your token is stored locally in your browser and never sent anywhere except GitHub's API.
         </div>
-        <div class="token-setup__row">
-          <input class="form-input" type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
-          <input class="form-input" type="text" id="github-repo" placeholder="owner/repo (e.g. kira/blog)" style="max-width: 250px;">
-          <button class="btn btn--primary" id="btn-save-token" style="white-space: nowrap;">save token</button>
+        <div class="form-group">
+          <label class="form-label" for="github-token">personal access token</label>
+          <input class="form-input" type="text" id="github-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" spellcheck="false">
         </div>
+        <div class="form-group">
+          <label class="form-label" for="github-repo">repository</label>
+          <input class="form-input" type="text" id="github-repo" placeholder="owner/repo (e.g. kira/blog)" autocomplete="off" spellcheck="false">
+        </div>
+        <button class="btn btn--primary" id="btn-save-token" style="margin-top: 4px;">save token</button>
       </div>
 
       <!-- Token Status -->
@@ -150,19 +154,17 @@
           <h3 class="settings-panel__title">GitHub Integration</h3>
           <div class="settings-group">
             <label class="settings-group__label">Personal Access Token</label>
-            <div class="token-setup__row">
-              <input class="form-input" type="password" id="settings-token" placeholder="ghp_xxxxxxxxxxxx">
-            </div>
+            <input class="form-input" type="text" id="settings-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" spellcheck="false">
             <p class="settings-group__help">Token with <code style="font-family: var(--font-mono); background: var(--bg-primary); padding: 1px 5px; border-radius: 3px; font-size: 0.85em;">repo</code> scope. Stored in localStorage only.</p>
           </div>
           <div class="settings-group">
             <label class="settings-group__label">Repository</label>
-            <input class="form-input" type="text" id="settings-repo" placeholder="owner/repo">
+            <input class="form-input" type="text" id="settings-repo" placeholder="owner/repo" autocomplete="off" spellcheck="false">
             <p class="settings-group__help">The GitHub repository for your blog (e.g. kira/blog.kirakira.cloud).</p>
           </div>
           <div class="settings-group">
             <label class="settings-group__label">Branch</label>
-            <input class="form-input" type="text" id="settings-branch" placeholder="main" value="main">
+            <input class="form-input" type="text" id="settings-branch" placeholder="main" value="main" autocomplete="off" spellcheck="false">
             <p class="settings-group__help">The branch to commit posts to.</p>
           </div>
           <div style="margin-top: 20px; display: flex; gap: 12px;">

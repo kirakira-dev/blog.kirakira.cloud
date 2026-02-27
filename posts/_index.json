@@ -7,5 +7,15 @@
       "rce"
     ],
     "excerpt": "xdg-mime allows for popen() escape"
+  },
+  {
+    "title": "LobeChat Plugin Arbituary JS",
+    "slug": "lobechat-plugin",
+    "date": "2026-02-27T04:11:19.826Z",
+    "tags": [
+      "js",
+      "critical"
+    ],
+    "excerpt": "Malicious LobeChat plugin allows for arbituary JS execution."
   }
 ]

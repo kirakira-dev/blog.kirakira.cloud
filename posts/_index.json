@@ -17,5 +17,17 @@
       "critical"
     ],
     "excerpt": "Malicious LobeChat plugin allows for arbituary JS execution."
+  },
+  {
+    "title": "LobeHub HTML Renderer Arbitrary JavaScript via Unsandboxed iframe",
+    "slug": "lobehub-html-renderer-arbitrary-javascript-via-unsandboxed-iframe",
+    "date": "2026-02-27T08:09:47.235Z",
+    "tags": [
+      "sandbox",
+      "lobehub",
+      "high",
+      "js"
+    ],
+    "excerpt": "unsandboxed `iframe` combined with unsanitized `document.write()` in the HTML artifact renderer"
   }
 ]

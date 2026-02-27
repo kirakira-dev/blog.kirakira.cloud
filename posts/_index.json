@@ -20,7 +20,7 @@
   },
   {
     "title": "LobeHub HTML Renderer Arbitrary JavaScript via Unsandboxed iframe",
-    "slug": "lobehub-html-renderer-arbitrary-javascript-via-unsandboxed-iframe",
+    "slug": "lobehub-html-renderer",
     "date": "2026-02-27T08:09:47.235Z",
     "tags": [
       "sandbox",

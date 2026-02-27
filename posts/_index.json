@@ -9,12 +9,12 @@
     "excerpt": ""
   },
   {
-    "title": "Linux WeChat RCE thoughts",
-    "slug": "linux-wechat-rce-thoughts",
+    "title": "Linux WeChat RCE",
+    "slug": "linux-wechat-rce",
     "date": "2026-02-11T13:00:25.154Z",
     "tags": [
       "rce"
     ],
-    "excerpt": ""
+    "excerpt": "xdg-mime allows for popen() escape"
   }
 ]

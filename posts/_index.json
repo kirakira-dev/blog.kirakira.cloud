@@ -29,5 +29,16 @@
       "js"
     ],
     "excerpt": "unsandboxed `iframe` combined with unsanitized `document.write()` in the HTML artifact renderer"
+  },
+  {
+    "title": "CVE-2026-34523",
+    "slug": "cve-2026-34523",
+    "date": "2026-04-07T05:45:57.343Z",
+    "tags": [
+      "cve",
+      "ghsa",
+      "resolved"
+    ],
+    "excerpt": "SillyTavern CVE"
   }
 ]
